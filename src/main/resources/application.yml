@@ -1,0 +1,70 @@
+server:
+  port: 8090
+
+product:
+  services:
+    auth: http://localhost:9000
+#  tokenType: oauth2
+  tokenType: jwt
+
+logging:
+  level:
+    org.springframework.security: info
+
+spring:
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+  application:
+    name: rsw-product
+  profiles:
+#    active: github
+#    active: rossoauth2
+    active: rossjwt
+
+security:
+  basic:
+    enabled: false
+  sessions: stateless
+
+---
+spring:
+  profiles: github
+
+# External Auth - github using oauth2 tokens
+#  This clientId has an OAuth2 application authorization configured which expects the client to be localhost:8080
+security:
+  oauth2:
+    client:
+      clientId: 7f4d9a2a316f28a4e2f0
+    resource:
+      userInfoUri: https://api.github.com/user
+      preferTokenInfo: false
+
+---
+spring:
+  profiles: rossoauth2
+
+# Internal Auth - ross using oauth2 tokens
+security:
+  oauth2:
+    client:
+      clientId: rsw
+    resource:
+      userInfoUri: ${host.authServer}/user
+      preferTokenInfo: false
+
+---
+spring:
+  profiles: rossjwt
+
+# Internal Auth server using JWT tokens
+security:
+  oauth2:
+    client:
+      clientId: rsw
+      clientSecret: rswsecret
+    resource:
+      jwt:
+        keyValue: abracadabra
+
