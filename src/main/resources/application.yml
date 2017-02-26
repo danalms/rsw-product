@@ -6,6 +6,8 @@ product:
     auth: http://localhost:9000
 #  tokenType: oauth2
   tokenType: jwt
+  defaultSchema: promoter1
+  defaultShard: shard1
 
 logging:
   level:
@@ -17,6 +19,17 @@ spring:
       write-dates-as-timestamps: false
   application:
     name: rsw-product
+  datasource:
+    initialize: false
+  jpa:
+    properties:
+      hibernate:
+        max_fetch_depth: 5
+        show_sql: true
+        format_sql: true
+        jdbc:
+          fetch_size: 50
+          batch_size: 50
   profiles:
 #    active: github
 #    active: rossoauth2
@@ -30,6 +43,37 @@ security:
 # oauth2 resource server filter order changed to -1 in Spring Boot 1.5; setting back to previous working order
     resource:
       filterOrder: 3
+
+datasource:
+  commonProperties:
+    type: org.apache.tomcat.jdbc.pool.DataSource
+    platform: postgres
+    driverClassName: org.postgresql.Driver
+    initialSize: 2
+    maxActive: 2
+    maxIdle: 2
+    minIdle: 1
+  hostMap:
+    shard1:
+      url: jdbc:postgresql://localhost:5432/rswdb?currentSchema=promoter1
+      username: rsw_admin_user
+      password: immv12#giver
+
+promoter:
+  schemaMap:
+    promoter1:
+      promoterId: 1
+      promoterName: Master
+      hostShardName: shard1
+    promoter20:
+      promoterId: 20
+      promoterName: Promoter20
+      hostShardName: shard1
+    promoter21:
+      promoterId: 21
+      promoterName: Promoter21
+      hostShardName: shard1
+
 
 ---
 spring:
