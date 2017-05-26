@@ -1,6 +1,6 @@
-# product
+# rsw-product
 
-Sample of a minimally configured microservice stub (sans persistence layer)
+Sample of a PostgreSQL-backed microservice 
 
 Key concepts being demonstrated are:
 
