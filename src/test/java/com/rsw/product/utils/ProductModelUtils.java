@@ -58,16 +58,16 @@ public abstract class ProductModelUtils {
     }
 
     public static Product buildProduct() {
-        Product patient = new Product();
-        patient.setCreatedDate(LocalDateTime.now());
-        patient.setUpdatedDate(LocalDateTime.now());
-        patient.setProductId(RandomUtils.nextLong());
-        patient.setStartDate(LocalDate.of(2017, 1, 29));
-        patient.setEndDate(LocalDate.of(2017,6, 1));
-        patient.setProductName(RandomStringUtils.randomAlphabetic(15));
-        patient.setDescription(RandomStringUtils.randomAlphabetic(30));
-        patient.setPrice(new BigDecimal(124.50));
-        patient.setSku(RandomStringUtils.randomAlphanumeric(6));
-        return patient;
+        Product product = new Product();
+        product.setCreatedDate(LocalDateTime.now());
+        product.setUpdatedDate(LocalDateTime.now());
+        product.setProductId(RandomUtils.nextLong());
+        product.setStartDate(LocalDate.of(2017, 1, 29));
+        product.setEndDate(LocalDate.of(2017,6, 1));
+        product.setProductName(RandomStringUtils.randomAlphabetic(15));
+        product.setDescription(RandomStringUtils.randomAlphabetic(30));
+        product.setPrice(new BigDecimal(124.50));
+        product.setSku(RandomStringUtils.randomAlphanumeric(6));
+        return product;
     }
 }
