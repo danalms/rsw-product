@@ -86,7 +86,7 @@ public class ProductController {
 
     @PreAuthorize("hasRole('ROLE_ADMIN')")
     @RequestMapping(value = "/{productId}", method = RequestMethod.PUT, produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
-    @ApiOperation(value = "createProduct")
+    @ApiOperation(value = "updateProduct")
     @ApiImplicitParams({ @ApiImplicitParam(name = "Authorization", value = "OAuth2 token",
             required = false, dataType = "string", paramType = "header", defaultValue = "Bearer X") })
     public ResponseEntity<String> updateProduct(@PathVariable("promoterId") Long promoterId,

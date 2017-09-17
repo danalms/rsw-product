@@ -4,6 +4,8 @@ import com.google.common.base.MoreObjects;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
+import javax.validation.constraints.DecimalMax;
+import javax.validation.constraints.DecimalMin;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
@@ -45,8 +47,9 @@ public class Product implements Serializable {
     @NotEmpty
     private String sku;
 
-    @Column(name="price", nullable=false)
-    @NotEmpty
+    @Column(name="price", nullable=false, precision = 9, scale = 2)
+    @DecimalMin("0.00")
+    @DecimalMax("9999999.00")
     private BigDecimal price;
 
     @Column(name="created_date", nullable=false)
