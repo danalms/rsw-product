@@ -1,4 +1,4 @@
-package com.rsw.product.service.impl
+package com.rsw.product.service
 
 import com.rsw.product.domain.ProductDetailsData
 import com.rsw.product.domain.ProductRequestData
@@ -7,16 +7,15 @@ import com.rsw.product.exception.EntityNotFoundException
 import com.rsw.product.fixture.ProductBuilder
 import com.rsw.product.fixture.ProductDetailsBuilder
 import com.rsw.product.repository.ProductRepository
-import com.rsw.product.service.ProductService
 import org.modelmapper.ModelMapper
 import org.springframework.data.domain.Sort
 import spock.lang.Specification
 
-class ProductServiceImplSpec extends Specification {
+class ProductServiceSpec extends Specification {
 
     ProductRepository productRepository = Mock(ProductRepository.class)
     ModelMapper mapper = Mock(ModelMapper.class)
-    ProductService productService = new ProductServiceImpl(productRepository, mapper)
+    ProductService productService = new ProductService(productRepository, mapper)
 
     def "findAllProducts"() {
         given:

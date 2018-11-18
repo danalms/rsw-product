@@ -1,4 +1,4 @@
-package com.rsw.product.service.impl;
+package com.rsw.product.service;
 
 import com.rsw.product.domain.ProductDetailsData;
 import com.rsw.product.domain.ProductRequestData;
@@ -24,10 +24,10 @@ import static org.mockito.Mockito.*;
  * Created by DAlms on 12/18/16.
  */
 @RunWith(MockitoJUnitRunner.class)
-public class ProductServiceImplTest {
+public class ProductServiceTest {
 
     @InjectMocks
-    private ProductServiceImpl subject;
+    private ProductService subject;
 
     @Mock
     private ProductRepository productRepository;
